@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.csse.publictransport.model.Inspection;
 
 @Repository
-public interface InspectionRepository extends MongoRepository<Inspection, Integer> {
+public interface InspectionRepository extends MongoRepository<Inspection, String> {
 
 }

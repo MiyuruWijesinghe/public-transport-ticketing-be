@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.csse.publictransport.model.BusTour;
 
 @Repository
-public interface BusTourRepository extends MongoRepository<BusTour, Integer> {
+public interface BusTourRepository extends MongoRepository<BusTour, String> {
 
 }

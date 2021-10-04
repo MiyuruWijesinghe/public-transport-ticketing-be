@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.csse.publictransport.model.BusRouteMap;
 
 @Repository
-public interface BusRouteMapRepository extends MongoRepository<BusRouteMap, Integer> {
+public interface BusRouteMapRepository extends MongoRepository<BusRouteMap, String> {
 
 }

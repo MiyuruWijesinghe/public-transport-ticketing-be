@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.csse.publictransport.model.TravelCard;
 
 @Repository
-public interface TravelCardRepository extends MongoRepository<TravelCard, Integer> {
+public interface TravelCardRepository extends MongoRepository<TravelCard, String> {
 
 }

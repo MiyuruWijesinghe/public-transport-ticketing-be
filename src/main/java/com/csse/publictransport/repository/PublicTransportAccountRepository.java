@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.csse.publictransport.model.PublicTransportAccount;
 
 @Repository
-public interface PublicTransportAccountRepository extends MongoRepository<PublicTransportAccount, Integer> {
+public interface PublicTransportAccountRepository extends MongoRepository<PublicTransportAccount, String> {
 
 }
