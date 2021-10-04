@@ -90,8 +90,6 @@ public class AuthServiceImpl implements AuthService {
 			roles.add(role.get());
 		}
 		
-		
-		//user.setId(generateId());
 		user.setFirstName(signUpRequest.getFirstName());
 		user.setLastName(signUpRequest.getLastName());
 		user.setDob(signUpRequest.getDob());
@@ -120,14 +118,4 @@ public class AuthServiceImpl implements AuthService {
 		}
 	}
 	
-	/*private int generateId() {
-		List<Users> userList = userRepository.findAll();
-		List<Integer> userIdList = new ArrayList<>();
-		
-		for(Users userObject : userList) {
-			userIdList.add(userObject.getId());
-		}
-		
-		return IdGenerator.generateIDs(userIdList);	
-	}*/
 }
