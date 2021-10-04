@@ -22,6 +22,7 @@ import com.csse.publictransport.exception.NoRecordFoundException;
 import com.csse.publictransport.exception.UserNotFoundException;
 import com.csse.publictransport.exception.ValidateRecordException;
 import com.csse.publictransport.resource.BusResource;
+import com.csse.publictransport.resource.BusRouteResource;
 import com.csse.publictransport.resource.RolesAddResource;
 import com.csse.publictransport.resource.RolesUpdateResource;
 import com.csse.publictransport.resource.SignupRequestResource;
@@ -117,7 +118,15 @@ public class BaseResponseEntityExceptionHandler extends ResponseEntityExceptionH
 					sField.setAccessible(true);
 					sField.set(busResource.getClass().cast(busResource), error.getDefaultMessage());
 				}
-				return new ResponseEntity<>(busResource, HttpStatus.UNPROCESSABLE_ENTITY);	
+				return new ResponseEntity<>(busResource, HttpStatus.UNPROCESSABLE_ENTITY);
+			case "busRouteResource":
+				BusRouteResource busRouteResource = new BusRouteResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField = busRouteResource.getClass().getDeclaredField(error.getField());
+					sField.setAccessible(true);
+					sField.set(busRouteResource.getClass().cast(busRouteResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(busRouteResource, HttpStatus.UNPROCESSABLE_ENTITY);	
 			default:
 				return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
 			}
