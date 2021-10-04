@@ -1,26 +1,14 @@
 package com.csse.publictransport.resource;
 
-import java.util.List;
-
 public class JwtResponseResource {
 	private String token;
 	private String type = "Bearer";
-	private Integer id;
+	private String id;
 	private String username;
 	private String email;
-	//private List<String> roles;
 	private String role;
 
-//	public JwtResponseResource(String accessToken, Integer id, String username, String email, List<String> roles) {
-//		this.token = accessToken;
-//		this.id = id;
-//		this.username = username;
-//		this.email = email;
-//		this.roles = roles;
-//	}
-
-	
-	public JwtResponseResource(String token, Integer id, String username, String email, String role) {
+	public JwtResponseResource(String token, String id, String username, String email, String role) {
 		super();
 		this.token = token;
 		this.id = id;
@@ -46,11 +34,11 @@ public class JwtResponseResource {
 		this.type = tokenType;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -80,7 +68,4 @@ public class JwtResponseResource {
 		this.role = role;
 	}
 
-//	public List<String> getRoles() {
-//		return roles;
-//	}
 }

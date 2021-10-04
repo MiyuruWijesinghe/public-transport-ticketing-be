@@ -24,6 +24,7 @@ import com.csse.publictransport.exception.ValidateRecordException;
 import com.csse.publictransport.resource.BusResource;
 import com.csse.publictransport.resource.BusRouteMapResource;
 import com.csse.publictransport.resource.BusRouteResource;
+import com.csse.publictransport.resource.LoginRequestResource;
 import com.csse.publictransport.resource.RolesAddResource;
 import com.csse.publictransport.resource.RolesUpdateResource;
 import com.csse.publictransport.resource.SignupRequestResource;
@@ -112,6 +113,14 @@ public class BaseResponseEntityExceptionHandler extends ResponseEntityExceptionH
 					sField.set(signupRequestResource.getClass().cast(signupRequestResource), error.getDefaultMessage());
 				}
 				return new ResponseEntity<>(signupRequestResource, HttpStatus.UNPROCESSABLE_ENTITY);
+			case "loginRequestResource":
+				LoginRequestResource loginRequestResource = new LoginRequestResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField = loginRequestResource.getClass().getDeclaredField(error.getField());
+					sField.setAccessible(true);
+					sField.set(loginRequestResource.getClass().cast(loginRequestResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(loginRequestResource, HttpStatus.UNPROCESSABLE_ENTITY);	
 			case "busResource":
 				BusResource busResource = new BusResource();
 				for (FieldError error : ex.getBindingResult().getFieldErrors()) {

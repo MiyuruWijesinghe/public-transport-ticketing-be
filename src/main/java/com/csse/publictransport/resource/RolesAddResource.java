@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class RolesAddResource {
 
 	@NotBlank(message = "{common.not-null}")
-	@Pattern(regexp = "ADMIN|BUYER|SELLER", message = "{roles.pattern}")
+	@Pattern(regexp = "ADMIN|INSPECTOR|MANAGER|PASSENGER", message = "{roles.pattern}")
 	private String name;
 
 	public String getName() {

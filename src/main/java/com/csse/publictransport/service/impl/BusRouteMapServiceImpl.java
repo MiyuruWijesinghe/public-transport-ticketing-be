@@ -18,6 +18,7 @@ import com.csse.publictransport.repository.BusRepository;
 import com.csse.publictransport.repository.BusRouteMapRepository;
 import com.csse.publictransport.repository.BusRouteRepository;
 import com.csse.publictransport.resource.BusRouteMapResource;
+import com.csse.publictransport.security.jwt.AuthTokenFilter;
 import com.csse.publictransport.service.BusRouteMapService;
 import com.csse.publictransport.service.CommonService;
 
@@ -27,6 +28,9 @@ public class BusRouteMapServiceImpl implements BusRouteMapService {
 
 	@Autowired
 	private Environment environment;
+	
+	@Autowired
+	private AuthTokenFilter authTokenFilter;
 	
 	@Autowired
 	private CommonService commonService;
@@ -103,8 +107,7 @@ public class BusRouteMapServiceImpl implements BusRouteMapService {
 		}
 		
 		busRouteMap.setStatus(busRouteMapResource.getStatus());
-        //bus.setCreatedUser(authTokenFilter.getUsername());
-        busRouteMap.setCreatedUser("MKW");
+		busRouteMap.setCreatedUser(authTokenFilter.getUsername());
         busRouteMap.setCreatedDate(commonService.formatDate(new Date()));
         busRouteMapRepository.save(busRouteMap);
 		return busRouteMap.getId();
@@ -138,7 +141,7 @@ public class BusRouteMapServiceImpl implements BusRouteMapService {
 		}
 		
 		busRouteMap.setStatus(busRouteMapResource.getStatus());
-		busRouteMap.setModifiedUser("MKW");
+		busRouteMap.setModifiedUser(authTokenFilter.getUsername());
 		busRouteMap.setModifiedDate(commonService.formatDate(new Date()));
 		busRouteMapRepository.save(busRouteMap);
 		return busRouteMap;

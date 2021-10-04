@@ -17,6 +17,7 @@ import com.csse.publictransport.model.BusTour;
 import com.csse.publictransport.repository.BusRouteMapRepository;
 import com.csse.publictransport.repository.BusTourRepository;
 import com.csse.publictransport.resource.BusTourResource;
+import com.csse.publictransport.security.jwt.AuthTokenFilter;
 import com.csse.publictransport.service.BusTourService;
 import com.csse.publictransport.service.CommonService;
 
@@ -26,6 +27,9 @@ public class BusTourServiceImpl implements BusTourService {
 
 	@Autowired
 	private Environment environment;
+	
+	@Autowired
+	private AuthTokenFilter authTokenFilter;
 	
 	@Autowired
 	private CommonService commonService;
@@ -73,8 +77,7 @@ public class BusTourServiceImpl implements BusTourService {
 		busTour.setDirection(busTourResource.getDirection());
 		busTour.setTourRevenue(new BigDecimal(busTourResource.getTourRevenue()));
 		busTour.setTotalPassengers(Long.parseLong(busTourResource.getTotalPassengers()));
-        //bus.setCreatedUser(authTokenFilter.getUsername());
-		busTour.setCreatedUser("MKW");
+		busTour.setCreatedUser(authTokenFilter.getUsername());
 		busTour.setCreatedDate(commonService.formatDate(new Date()));
 		busTourRepository.save(busTour);
 		return busTour.getId();
@@ -102,7 +105,7 @@ public class BusTourServiceImpl implements BusTourService {
 		busTour.setDirection(busTourResource.getDirection());
 		busTour.setTourRevenue(new BigDecimal(busTourResource.getTourRevenue()));
 		busTour.setTotalPassengers(Long.parseLong(busTourResource.getTotalPassengers()));
-		busTour.setModifiedUser("MKW");
+		busTour.setModifiedUser(authTokenFilter.getUsername());
         busTour.setModifiedDate(commonService.formatDate(new Date()));
 		busTourRepository.save(busTour);
 		return busTour;

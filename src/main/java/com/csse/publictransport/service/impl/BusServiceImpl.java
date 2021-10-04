@@ -14,6 +14,7 @@ import com.csse.publictransport.repository.BusRepository;
 import com.csse.publictransport.resource.BusResource;
 import com.csse.publictransport.service.BusService;
 import com.csse.publictransport.service.CommonService;
+import com.csse.publictransport.security.jwt.AuthTokenFilter;
 
 
 @Component
@@ -22,6 +23,9 @@ public class BusServiceImpl implements BusService {
 
 	@Autowired
 	private Environment environment;
+	
+	@Autowired
+	private AuthTokenFilter authTokenFilter;
 	
 	@Autowired
 	private CommonService commonService;
@@ -70,8 +74,7 @@ public class BusServiceImpl implements BusService {
         bus.setVehicleNo(busResource.getVehicleNo());
         bus.setCapacity(Long.parseLong(busResource.getCapacity()));
         bus.setStatus(busResource.getStatus());
-        //bus.setCreatedUser(authTokenFilter.getUsername());
-        bus.setCreatedUser("MKW");
+        bus.setCreatedUser(authTokenFilter.getUsername());
         bus.setCreatedDate(commonService.formatDate(new Date()));
         busRepository.save(bus);
 		return bus.getId();
@@ -93,7 +96,7 @@ public class BusServiceImpl implements BusService {
 		bus.setVehicleNo(busResource.getVehicleNo());
         bus.setCapacity(Long.parseLong(busResource.getCapacity()));
 		bus.setStatus(busResource.getStatus());
-		bus.setModifiedUser("MKW");
+		bus.setModifiedUser(authTokenFilter.getUsername());
         bus.setModifiedDate(commonService.formatDate(new Date()));
 		busRepository.save(bus);
 		return bus;

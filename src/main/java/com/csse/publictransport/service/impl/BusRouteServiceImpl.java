@@ -15,6 +15,7 @@ import com.csse.publictransport.exception.ValidateRecordException;
 import com.csse.publictransport.model.BusRoute;
 import com.csse.publictransport.repository.BusRouteRepository;
 import com.csse.publictransport.resource.BusRouteResource;
+import com.csse.publictransport.security.jwt.AuthTokenFilter;
 import com.csse.publictransport.service.BusRouteService;
 import com.csse.publictransport.service.CommonService;
 
@@ -24,6 +25,9 @@ public class BusRouteServiceImpl implements BusRouteService {
 
 	@Autowired
 	private Environment environment;
+	
+	@Autowired
+	private AuthTokenFilter authTokenFilter;
 	
 	@Autowired
 	private CommonService commonService;
@@ -74,8 +78,7 @@ public class BusRouteServiceImpl implements BusRouteService {
         busRoute.setDestination(busRouteResource.getDestination());
         busRoute.setTotalDistance(new BigDecimal(busRouteResource.getTotalDistance()));
         busRoute.setStatus(busRouteResource.getStatus());
-        //bus.setCreatedUser(authTokenFilter.getUsername());
-        busRoute.setCreatedUser("MKW");
+        busRoute.setCreatedUser(authTokenFilter.getUsername());
         busRoute.setCreatedDate(commonService.formatDate(new Date()));
         busRouteRepository.save(busRoute);
 		return busRoute.getId();
@@ -98,7 +101,7 @@ public class BusRouteServiceImpl implements BusRouteService {
         busRoute.setDestination(busRouteResource.getDestination());
         busRoute.setTotalDistance(new BigDecimal(busRouteResource.getTotalDistance()));
 		busRoute.setStatus(busRouteResource.getStatus());
-		busRoute.setModifiedUser("MKW");
+		busRoute.setModifiedUser(authTokenFilter.getUsername());
         busRoute.setModifiedDate(commonService.formatDate(new Date()));
 		busRouteRepository.save(busRoute);
 		return busRoute;
