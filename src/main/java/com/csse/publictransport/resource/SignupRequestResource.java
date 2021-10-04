@@ -1,18 +1,14 @@
 package com.csse.publictransport.resource;
 
-import java.util.Set;
-
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
  
 public class SignupRequestResource {
-//    @NotBlank
-//    @Size(min = 3, max = 20)
-//    private String username;
     
 	@NotBlank(message = "{common.not-null}")
 	@Size(max = 70, message = "{common-name.size}")
 	private String roleName;
-	
 	
 	@NotBlank(message = "{common.not-null}")
 	@Size(max = 70, message = "{common-name.size}")
@@ -54,14 +50,6 @@ public class SignupRequestResource {
     
 	@NotBlank(message = "{common.not-null}")
 	private String nic;
-  
-//    public String getUsername() {
-//        return username;
-//    }
-// 
-//    public void setUsername(String username) {
-//        this.username = username;
-//    }
  
     public String getEmail() {
         return email;
@@ -167,6 +155,4 @@ public class SignupRequestResource {
 		this.nic = nic;
 	}
 
-
-    
 }

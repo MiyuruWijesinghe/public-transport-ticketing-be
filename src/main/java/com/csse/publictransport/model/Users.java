@@ -191,4 +191,5 @@ public class Users implements Serializable {
 	public void setUserImage(String userImage) {
 		this.userImage = userImage;
 	}
+	
 }
