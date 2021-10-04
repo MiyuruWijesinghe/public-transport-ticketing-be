@@ -24,6 +24,7 @@ import com.csse.publictransport.exception.ValidateRecordException;
 import com.csse.publictransport.resource.BusResource;
 import com.csse.publictransport.resource.BusRouteMapResource;
 import com.csse.publictransport.resource.BusRouteResource;
+import com.csse.publictransport.resource.InspectionResource;
 import com.csse.publictransport.resource.LoginRequestResource;
 import com.csse.publictransport.resource.RolesAddResource;
 import com.csse.publictransport.resource.RolesUpdateResource;
@@ -144,7 +145,15 @@ public class BaseResponseEntityExceptionHandler extends ResponseEntityExceptionH
 					sField.setAccessible(true);
 					sField.set(busRouteMapResource.getClass().cast(busRouteMapResource), error.getDefaultMessage());
 				}
-				return new ResponseEntity<>(busRouteMapResource, HttpStatus.UNPROCESSABLE_ENTITY);		
+				return new ResponseEntity<>(busRouteMapResource, HttpStatus.UNPROCESSABLE_ENTITY);	
+			case "inspectionResource":
+				InspectionResource inspectionResource = new InspectionResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField = inspectionResource.getClass().getDeclaredField(error.getField());
+					sField.setAccessible(true);
+					sField.set(inspectionResource.getClass().cast(inspectionResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(inspectionResource, HttpStatus.UNPROCESSABLE_ENTITY);		
 			default:
 				return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
 			}
