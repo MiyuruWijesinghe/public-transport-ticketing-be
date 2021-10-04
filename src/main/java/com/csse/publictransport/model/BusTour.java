@@ -11,7 +11,9 @@ public class BusTour {
 	@Id
 	private String id;
 	
-	private Bus bus;
+	private BusRouteMap busRouteMap;
+	
+	private String date;
 	
 	private String startTime;
 	
@@ -38,13 +40,21 @@ public class BusTour {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	public Bus getBus() {
-		return bus;
+	
+	public BusRouteMap getBusRouteMap() {
+		return busRouteMap;
 	}
 
-	public void setBus(Bus bus) {
-		this.bus = bus;
+	public void setBusRouteMap(BusRouteMap busRouteMap) {
+		this.busRouteMap = busRouteMap;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public String getStartTime() {

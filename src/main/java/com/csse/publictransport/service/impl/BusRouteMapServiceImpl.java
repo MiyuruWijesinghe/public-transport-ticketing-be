@@ -71,6 +71,16 @@ public class BusRouteMapServiceImpl implements BusRouteMapService {
 	}
 
 	@Override
+	public Optional<BusRouteMap> findByBusIdAndBusRouteId(String busId, String busRouteId) {
+		Optional<BusRouteMap> busRouteMap = busRouteMapRepository.findByBusIdAndBusRouteId(busId, busRouteId);
+		if (busRouteMap.isPresent()) {
+			return Optional.ofNullable(busRouteMap.get());
+		} else {
+			return Optional.empty();
+		}
+	}
+	
+	@Override
 	public String saveBusRouteMap(BusRouteMapResource busRouteMapResource) {
 		BusRouteMap busRouteMap = new BusRouteMap();
 		

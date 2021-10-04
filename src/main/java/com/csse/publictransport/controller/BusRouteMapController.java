@@ -104,6 +104,21 @@ public class BusRouteMapController {
 	}
 	
 	
+	
+	@GetMapping(value = "/bus/{busId}/route/{routeId}")
+	public ResponseEntity<Object> getBusRouteMapByBusIdAndRouteId(@PathVariable(value = "busId", required = true) String busId,
+			@PathVariable(value = "routeId", required = true) String routeId) {
+		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
+		Optional<BusRouteMap> isPresentBusRouteMap = busRouteMapService.findByBusIdAndBusRouteId(busId, routeId);
+		if (isPresentBusRouteMap.isPresent()) {
+			return new ResponseEntity<>(isPresentBusRouteMap, HttpStatus.OK);
+		} else {
+			responseMessage.setMessages(environment.getProperty("common.record-not-found"));
+			return new ResponseEntity<>(responseMessage, HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	
 	@PostMapping(value = "/save")
 	public ResponseEntity<Object> addBusRouteMap(@Valid @RequestBody BusRouteMapResource busRouteMapAddResource) {
 		String busRouteMapId = busRouteMapService.saveBusRouteMap(busRouteMapAddResource);

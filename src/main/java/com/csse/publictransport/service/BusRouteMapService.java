@@ -19,6 +19,8 @@ public interface BusRouteMapService {
 	
 	public List<BusRouteMap> findByRouteId(String routeId);
 	
+	public Optional<BusRouteMap> findByBusIdAndBusRouteId(String busId, String busRouteId);
+	
 	public String saveBusRouteMap(BusRouteMapResource busRouteMapResource);
 	
 	public BusRouteMap updateBusRouteMap(String id, BusRouteMapResource busRouteMapResource);
