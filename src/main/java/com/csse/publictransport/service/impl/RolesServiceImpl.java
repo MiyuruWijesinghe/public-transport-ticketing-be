@@ -1,12 +1,13 @@
 package com.csse.publictransport.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.csse.publictransport.enums.CommonStatus;
 import com.csse.publictransport.exception.NoRecordFoundException;
 import com.csse.publictransport.exception.ValidateRecordException;
@@ -15,7 +16,6 @@ import com.csse.publictransport.repository.RolesRepository;
 import com.csse.publictransport.resource.RolesAddResource;
 import com.csse.publictransport.resource.RolesUpdateResource;
 import com.csse.publictransport.service.RolesService;
-import com.csse.publictransport.util.IdGenerator;
 
 
 /**
@@ -38,17 +38,6 @@ public class RolesServiceImpl implements RolesService {
 	
 	@Autowired
 	private RolesRepository rolesRepository;
-	
-	private int generateId() {
-		List<Roles> rolesList = rolesRepository.findAll();
-		List<Integer> rolesIdList = new ArrayList<>();
-		
-		for(Roles rolesObject : rolesList) {
-			rolesIdList.add(rolesObject.getId());
-		}
-		
-		return IdGenerator.generateIDs(rolesIdList);	
-	}
 
 	@Override
 	public List<Roles> findAll() {
@@ -56,7 +45,7 @@ public class RolesServiceImpl implements RolesService {
 	}
 
 	@Override
-	public Optional<Roles> findById(int id) {
+	public Optional<Roles> findById(String id) {
 		Optional<Roles> roles = rolesRepository.findById(id);
 		if (roles.isPresent()) {
 			return Optional.ofNullable(roles.get());
@@ -76,7 +65,7 @@ public class RolesServiceImpl implements RolesService {
 	}
 	
 	@Override
-	public Integer saveRole(RolesAddResource rolesAddResource) {
+	public String saveRole(RolesAddResource rolesAddResource) {
 		Roles roles = new Roles();
 		
 		Optional<Roles> isPresentRole = rolesRepository.findByName("ROLE_" + rolesAddResource.getName());
@@ -84,7 +73,6 @@ public class RolesServiceImpl implements RolesService {
         	throw new ValidateRecordException(environment.getProperty("role.duplicate"), "message");
 		}
 		
-		roles.setId(generateId());
 		roles.setName(rolesAddResource.getName());
 		roles.setStatus(CommonStatus.ACTIVE.toString());
 		rolesRepository.save(roles);
@@ -92,7 +80,7 @@ public class RolesServiceImpl implements RolesService {
 	}
 
 	@Override
-	public Roles updateRole(int id, RolesUpdateResource rolesUpdateResource) {
+	public Roles updateRole(String id, RolesUpdateResource rolesUpdateResource) {
 		
 		Optional<Roles> isPresentRoles = rolesRepository.findById(id);
 		if (!isPresentRoles.isPresent()) {
@@ -106,7 +94,7 @@ public class RolesServiceImpl implements RolesService {
 	}
 	
 	@Override
-	public String deleteRole(int id) {
+	public String deleteRole(String id) {
 		Optional<Roles> isPresentRoles = rolesRepository.findById(id);
 		if (!isPresentRoles.isPresent()) {
 			throw new NoRecordFoundException(environment.getProperty("common.record-not-found"));

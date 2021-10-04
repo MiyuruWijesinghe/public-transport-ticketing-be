@@ -37,7 +37,7 @@ public interface RolesService {
 	 * @param id the id
 	 * @return the optional
 	 */
-	public Optional<Roles> findById(int id);
+	public Optional<Roles> findById(String id);
 	
 	/**
 	 * Find by name.
@@ -53,7 +53,7 @@ public interface RolesService {
 	 * @param rolesAddResource the roles add resource
 	 * @return the integer
 	 */
-	public Integer saveRole(RolesAddResource rolesAddResource);
+	public String saveRole(RolesAddResource rolesAddResource);
 	
 	/**
 	 * Update role.
@@ -62,7 +62,7 @@ public interface RolesService {
 	 * @param rolesUpdateResource the roles update resource
 	 * @return the roles
 	 */
-	public Roles updateRole(int id, RolesUpdateResource rolesUpdateResource);
+	public Roles updateRole(String id, RolesUpdateResource rolesUpdateResource);
 	
 	/**
 	 * Delete role.
@@ -70,6 +70,6 @@ public interface RolesService {
 	 * @param id the id
 	 * @return the string
 	 */
-	public String deleteRole(int id);
+	public String deleteRole(String id);
 
 }

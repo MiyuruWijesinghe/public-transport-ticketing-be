@@ -20,9 +20,9 @@ import com.csse.publictransport.model.Roles;
  */
 
 @Repository
-public interface RolesRepository extends MongoRepository<Roles, Integer> {
+public interface RolesRepository extends MongoRepository<Roles, String> {
 
-	public Optional<Roles> findByIdAndStatus(int id, String status);
+	public Optional<Roles> findByIdAndStatus(String id, String status);
 
 	public Optional<Roles> findByName(String name);
 

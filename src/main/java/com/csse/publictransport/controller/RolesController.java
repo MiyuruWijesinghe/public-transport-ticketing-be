@@ -74,7 +74,7 @@ public class RolesController {
 	 * @return the role by id
 	 */
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Object> getRoleById(@PathVariable(value = "id", required = true) int id) {
+	public ResponseEntity<Object> getRoleById(@PathVariable(value = "id", required = true) String id) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
 		Optional<Roles> isPresentRoles = rolesService.findById(id);
 		if (isPresentRoles.isPresent()) {
@@ -113,8 +113,8 @@ public class RolesController {
 	 */
 	@PostMapping(value = "/save")
 	public ResponseEntity<Object> addRole(@Valid @RequestBody RolesAddResource rolesAddResource) {
-		Integer rolesId = rolesService.saveRole(rolesAddResource);
-		SuccessAndErrorDetailsResource successDetailsDto = new SuccessAndErrorDetailsResource(environment.getProperty("common.saved"), rolesId.toString());
+		String rolesId = rolesService.saveRole(rolesAddResource);
+		SuccessAndErrorDetailsResource successDetailsDto = new SuccessAndErrorDetailsResource(environment.getProperty("common.saved"), rolesId);
 		return new ResponseEntity<>(successDetailsDto, HttpStatus.CREATED);
 	}
 	
@@ -127,7 +127,7 @@ public class RolesController {
 	 * @return the response entity
 	 */
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Object> updateRole(@PathVariable(value = "id", required = true) int id,
+	public ResponseEntity<Object> updateRole(@PathVariable(value = "id", required = true) String id,
 			@Valid @RequestBody RolesUpdateResource rolesUpdateResource) {
 		Roles roles = rolesService.updateRole(id, rolesUpdateResource);
 		SuccessAndErrorDetailsResource successDetailsDto = new SuccessAndErrorDetailsResource(environment.getProperty("common.updated"), roles);
@@ -142,7 +142,7 @@ public class RolesController {
 	 * @return the response entity
 	 */
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Object> deleteRole(@PathVariable(value = "id", required = true) int id) {
+	public ResponseEntity<Object> deleteRole(@PathVariable(value = "id", required = true) String id) {
 		String message = rolesService.deleteRole(id);
 		SuccessAndErrorDetailsResource successDetailsDto = new SuccessAndErrorDetailsResource(message);
 		return new ResponseEntity<>(successDetailsDto, HttpStatus.CREATED);
