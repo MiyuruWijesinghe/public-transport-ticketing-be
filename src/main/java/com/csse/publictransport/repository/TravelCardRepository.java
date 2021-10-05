@@ -1,5 +1,7 @@
 package com.csse.publictransport.repository;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import com.csse.publictransport.model.TravelCard;
@@ -17,5 +19,7 @@ import com.csse.publictransport.model.TravelCard;
 
 @Repository
 public interface TravelCardRepository extends MongoRepository<TravelCard, String> {
+
+	List<TravelCard> findByStatus(String status);
 
 }

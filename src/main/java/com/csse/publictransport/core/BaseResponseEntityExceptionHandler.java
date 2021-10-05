@@ -24,6 +24,7 @@ import com.csse.publictransport.exception.ValidateRecordException;
 import com.csse.publictransport.resource.BusResource;
 import com.csse.publictransport.resource.BusRouteMapResource;
 import com.csse.publictransport.resource.BusRouteResource;
+import com.csse.publictransport.resource.BusTokenRequestResource;
 import com.csse.publictransport.resource.InspectionResource;
 import com.csse.publictransport.resource.LoginRequestResource;
 import com.csse.publictransport.resource.PublicTransportAccountAddResource;
@@ -33,6 +34,7 @@ import com.csse.publictransport.resource.RolesAddResource;
 import com.csse.publictransport.resource.RolesUpdateResource;
 import com.csse.publictransport.resource.SignupRequestResource;
 import com.csse.publictransport.resource.SuccessAndErrorDetailsResource;
+import com.csse.publictransport.resource.TravelCardRequestResource;
 import com.csse.publictransport.resource.ValidateResource;
 
 
@@ -180,7 +182,23 @@ public class BaseResponseEntityExceptionHandler extends ResponseEntityExceptionH
 					sField.setAccessible(true);
 					sField.set(publicTransportAccountUpdateResource.getClass().cast(publicTransportAccountUpdateResource), error.getDefaultMessage());
 				}
-				return new ResponseEntity<>(publicTransportAccountUpdateResource, HttpStatus.UNPROCESSABLE_ENTITY);	
+				return new ResponseEntity<>(publicTransportAccountUpdateResource, HttpStatus.UNPROCESSABLE_ENTITY);
+			case "travelCardRequestResource":
+				TravelCardRequestResource travelCardRequestResource = new TravelCardRequestResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField = travelCardRequestResource.getClass().getDeclaredField(error.getField());
+					sField.setAccessible(true);
+					sField.set(travelCardRequestResource.getClass().cast(travelCardRequestResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(travelCardRequestResource, HttpStatus.UNPROCESSABLE_ENTITY);	
+			case "busTokenRequestResource":
+				BusTokenRequestResource busTokenRequestResource = new BusTokenRequestResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField = busTokenRequestResource.getClass().getDeclaredField(error.getField());
+					sField.setAccessible(true);
+					sField.set(busTokenRequestResource.getClass().cast(busTokenRequestResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(busTokenRequestResource, HttpStatus.UNPROCESSABLE_ENTITY);
 			default:
 				return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
 			}

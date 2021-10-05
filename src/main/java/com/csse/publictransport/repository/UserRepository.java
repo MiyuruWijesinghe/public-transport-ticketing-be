@@ -18,7 +18,7 @@ import com.csse.publictransport.model.Users;
  */
 
 @Repository
-public interface UserRepository extends MongoRepository<Users, Integer> {
+public interface UserRepository extends MongoRepository<Users, String> {
 
 	public Optional<Users> findByUsername(String username);
 
