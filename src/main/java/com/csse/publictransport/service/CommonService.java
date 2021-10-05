@@ -18,6 +18,12 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CommonService {
 
+	/**
+	 * Format date.
+	 *
+	 * @param date - the date
+	 * @return the string
+	 */
 	public String formatDate(Date date);
 	
 }

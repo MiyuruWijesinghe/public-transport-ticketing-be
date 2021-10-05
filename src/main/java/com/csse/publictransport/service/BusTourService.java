@@ -22,21 +22,57 @@ import com.csse.publictransport.resource.BusTourResource;
 @Service
 public interface BusTourService {
 
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
 	public List<BusTour> findAll();
 	
 	
+	/**
+	 * Find by id.
+	 *
+	 * @param id - the id
+	 * @return the optional
+	 */
 	public Optional<BusTour> findById(String id);
 	
 	
+	/**
+	 * Find by bus id.
+	 *
+	 * @param busId - the bus id
+	 * @return the list
+	 */
 	public List<BusTour> findByBusId(String busId);
 	
 	
+	/**
+	 * Save bus tour.
+	 *
+	 * @param busTourResource - the bus tour resource
+	 * @return the string
+	 */
 	public String saveBusTour(BusTourResource busTourResource);
 	
 	
+	/**
+	 * Update bus tour.
+	 *
+	 * @param id - the id
+	 * @param busTourResource - the bus tour resource
+	 * @return the bus tour
+	 */
 	public BusTour updateBusTour(String id, BusTourResource busTourResource);
 	
 	
+	/**
+	 * Delete bus tour.
+	 *
+	 * @param id - the id
+	 * @return the string
+	 */
 	public String deleteBusTour(String id);
 	
 }

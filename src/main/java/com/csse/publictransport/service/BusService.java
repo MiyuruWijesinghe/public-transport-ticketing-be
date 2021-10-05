@@ -20,24 +20,67 @@ import com.csse.publictransport.resource.BusResource;
 @Service
 public interface BusService {
 
+	
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
 	public List<Bus> findAll();
 	
 	
+	/**
+	 * Find by id.
+	 *
+	 * @param id - the id
+	 * @return the optional
+	 */
 	public Optional<Bus> findById(String id);
+		
 	
-	
+	/**
+	 * Find by vehicle no.
+	 *
+	 * @param vehicleNo - the vehicle no
+	 * @return the optional
+	 */
 	public Optional<Bus> findByVehicleNo(String vehicleNo);
+		
 	
-	
+	/**
+	 * Find by status.
+	 *
+	 * @param status - the status
+	 * @return the list
+	 */
 	public List<Bus> findByStatus(String status);
 	
 	
+	/**
+	 * Save bus.
+	 *
+	 * @param busResource - the bus resource
+	 * @return the string
+	 */
 	public String saveBus(BusResource busResource);
 	
 	
+	/**
+	 * Update bus.
+	 *
+	 * @param id - the id
+	 * @param busResource - the bus resource
+	 * @return the bus
+	 */
 	public Bus updateBus(String id, BusResource busResource);
 	
 	
+	/**
+	 * Delete bus.
+	 *
+	 * @param id - the id
+	 * @return the string
+	 */
 	public String deleteBus(String id);
 	
 }

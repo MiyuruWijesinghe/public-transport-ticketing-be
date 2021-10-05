@@ -48,7 +48,11 @@ public class BusRouteMapController {
 	private BusRouteMapService busRouteMapService;
 
 	
-	
+	/**
+	 * Gets the all bus route maps.
+	 *
+	 * @return the all bus route maps
+	 */
 	@GetMapping(value = "/all")
 	public ResponseEntity<Object> getAllBusRouteMaps() {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -62,7 +66,12 @@ public class BusRouteMapController {
 	}
 	
 	
-	
+	/**
+	 * Gets the bus route map by id.
+	 *
+	 * @param id - the id
+	 * @return the bus route map by id
+	 */
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Object> getBusRouteMapById(@PathVariable(value = "id", required = true) String id) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -76,6 +85,12 @@ public class BusRouteMapController {
 	}
 	
 	
+	/**
+	 * Gets the bus route map by status.
+	 *
+	 * @param status - the status
+	 * @return the bus route map by status
+	 */
 	@GetMapping(value = "/status/{status}")
 	public ResponseEntity<Object> getBusRouteMapByStatus(@PathVariable(value = "status", required = true) String status) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -89,6 +104,12 @@ public class BusRouteMapController {
 	}
 	
 	
+	/**
+	 * Gets the bus route map by bus id.
+	 *
+	 * @param busId - the bus id
+	 * @return the bus route map by bus id
+	 */
 	@GetMapping(value = "/bus/{busId}")
 	public ResponseEntity<Object> getBusRouteMapByBusId(@PathVariable(value = "busId", required = true) String busId) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -102,6 +123,12 @@ public class BusRouteMapController {
 	}
 	
 	
+	/**
+	 * Gets the bus route map by route id.
+	 *
+	 * @param routeId - the route id
+	 * @return the bus route map by route id
+	 */
 	@GetMapping(value = "/route/{routeId}")
 	public ResponseEntity<Object> getBusRouteMapByRouteId(@PathVariable(value = "routeId", required = true) String routeId) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -115,7 +142,13 @@ public class BusRouteMapController {
 	}
 	
 	
-	
+	/**
+	 * Gets the bus route map by bus id and route id.
+	 *
+	 * @param busId - the bus id
+	 * @param routeId - the route id
+	 * @return the bus route map by bus id and route id
+	 */
 	@GetMapping(value = "/bus/{busId}/route/{routeId}")
 	public ResponseEntity<Object> getBusRouteMapByBusIdAndRouteId(@PathVariable(value = "busId", required = true) String busId,
 			@PathVariable(value = "routeId", required = true) String routeId) {
@@ -130,6 +163,12 @@ public class BusRouteMapController {
 	}
 	
 	
+	/**
+	 * Adds the bus route map.
+	 *
+	 * @param busRouteMapAddResource - the bus route map add resource
+	 * @return the response entity
+	 */
 	@PostMapping(value = "/save")
 	public ResponseEntity<Object> addBusRouteMap(@Valid @RequestBody BusRouteMapResource busRouteMapAddResource) {
 		String busRouteMapId = busRouteMapService.saveBusRouteMap(busRouteMapAddResource);
@@ -138,7 +177,13 @@ public class BusRouteMapController {
 	}
 	
 	
-	
+	/**
+	 * Update bus route map.
+	 *
+	 * @param id - the id
+	 * @param busRouteMapResource - the bus route map resource
+	 * @return the response entity
+	 */
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Object> updateBusRouteMap(@PathVariable(value = "id", required = true) String id,
 			@Valid @RequestBody BusRouteMapResource busRouteMapResource) {
@@ -148,7 +193,12 @@ public class BusRouteMapController {
 	}
 	
 	
-	
+	/**
+	 * Delete bus route map.
+	 *
+	 * @param id - the id
+	 * @return the response entity
+	 */
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Object> deleteBusRouteMap(@PathVariable(value = "id", required = true) String id) {
 		String message = busRouteMapService.deleteBusRouteMap(id);

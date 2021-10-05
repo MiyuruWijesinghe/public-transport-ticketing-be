@@ -48,7 +48,11 @@ public class BusController {
 	private BusService busService;
 
 	
-	
+	/**
+	 * Gets the all buses.
+	 *
+	 * @return the all buses
+	 */
 	@GetMapping(value = "/all")
 	public ResponseEntity<Object> getAllBuses() {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -62,7 +66,12 @@ public class BusController {
 	}
 	
 	
-	
+	/**
+	 * Gets the bus by id.
+	 *
+	 * @param id - the id
+	 * @return the bus by id
+	 */
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Object> getBusById(@PathVariable(value = "id", required = true) String id) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -76,7 +85,12 @@ public class BusController {
 	}
 	
 	
-	
+	/**
+	 * Gets the bus by vehicle no.
+	 *
+	 * @param vehicleNo - the vehicle no
+	 * @return the bus by vehicle no
+	 */
 	@GetMapping(value = "/vehicleNo/{vehicleNo}")
 	public ResponseEntity<Object> getBusByVehicleNo(@PathVariable(value = "vehicleNo", required = true) String vehicleNo) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -90,6 +104,12 @@ public class BusController {
 	}
 	
 	
+	/**
+	 * Gets the bus by status.
+	 *
+	 * @param status - the status
+	 * @return the bus by status
+	 */
 	@GetMapping(value = "/status/{status}")
 	public ResponseEntity<Object> getBusByStatus(@PathVariable(value = "status", required = true) String status) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -103,6 +123,12 @@ public class BusController {
 	}
 	
 	
+	/**
+	 * Adds the bus.
+	 *
+	 * @param busAddResource - the bus add resource
+	 * @return the response entity
+	 */
 	@PostMapping(value = "/save")
 	public ResponseEntity<Object> addBus(@Valid @RequestBody BusResource busAddResource) {
 		String busId = busService.saveBus(busAddResource);
@@ -111,7 +137,13 @@ public class BusController {
 	}
 	
 	
-	
+	/**
+	 * Update bus.
+	 *
+	 * @param id - the id
+	 * @param busResource - the bus resource
+	 * @return the response entity
+	 */
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Object> updateBus(@PathVariable(value = "id", required = true) String id,
 			@Valid @RequestBody BusResource busResource) {
@@ -121,7 +153,12 @@ public class BusController {
 	}
 	
 	
-	
+	/**
+	 * Delete bus.
+	 *
+	 * @param id - the id
+	 * @return the response entity
+	 */
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Object> deleteBus(@PathVariable(value = "id", required = true) String id) {
 		String message = busService.deleteBus(id);

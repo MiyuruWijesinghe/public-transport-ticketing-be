@@ -48,9 +48,13 @@ public class PublicTransportAccountController {
 	
 	@Autowired
 	private PublicTransportAccountService publicTransportAccountService;
-
 	
 	
+	/**
+	 * Gets the all public transport accounts.
+	 *
+	 * @return the all public transport accounts
+	 */
 	@GetMapping(value = "/all")
 	public ResponseEntity<Object> getAllPublicTransportAccounts() {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -64,7 +68,12 @@ public class PublicTransportAccountController {
 	}
 	
 	
-	
+	/**
+	 * Gets the public transport account by id.
+	 *
+	 * @param id - the id
+	 * @return the public transport account by id
+	 */
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Object> getPublicTransportAccountById(@PathVariable(value = "id", required = true) String id) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -78,6 +87,12 @@ public class PublicTransportAccountController {
 	}
 
 	
+	/**
+	 * Gets the public transport account by user id.
+	 *
+	 * @param userId - the user id
+	 * @return the public transport account by user id
+	 */
 	@GetMapping(value = "/user/{userId}")
 	public ResponseEntity<Object> getPublicTransportAccountByUserId(@PathVariable(value = "userId", required = true) String userId) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -90,6 +105,12 @@ public class PublicTransportAccountController {
 		}
 	}
 	
+	/**
+	 * Gets the public transport account by account no.
+	 *
+	 * @param accountNo - the account no
+	 * @return the public transport account by account no
+	 */
 	@GetMapping(value = "/account/{accountNo}")
 	public ResponseEntity<Object> getPublicTransportAccountByAccountNo(@PathVariable(value = "accountNo", required = true) String accountNo) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -103,6 +124,12 @@ public class PublicTransportAccountController {
 	}
 	
 	
+	/**
+	 * Gets the public transport accounts by status.
+	 *
+	 * @param status - the status
+	 * @return the public transport accounts by status
+	 */
 	@GetMapping(value = "/status/{status}")
 	public ResponseEntity<Object> getPublicTransportAccountsByStatus(@PathVariable(value = "status", required = true) String status) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -116,7 +143,12 @@ public class PublicTransportAccountController {
 	}
 	
 	
-	
+	/**
+	 * Adds the public transport account.
+	 *
+	 * @param publicTransportAccountAddResource - the public transport account add resource
+	 * @return the response entity
+	 */
 	@PostMapping(value = "/save")
 	public ResponseEntity<Object> addPublicTransportAccount(@Valid @RequestBody PublicTransportAccountAddResource publicTransportAccountAddResource) {
 		String accountId = publicTransportAccountService.savePublicTransportAccount(publicTransportAccountAddResource);
@@ -125,7 +157,13 @@ public class PublicTransportAccountController {
 	}
 	
 	
-	
+	/**
+	 * Update public transport account.
+	 *
+	 * @param id - the id
+	 * @param publicTransportAccountUpdateResource - the public transport account update resource
+	 * @return the response entity
+	 */
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Object> updatePublicTransportAccount(@PathVariable(value = "id", required = true) String id,
 			@Valid @RequestBody PublicTransportAccountUpdateResource publicTransportAccountUpdateResource) {
@@ -135,6 +173,12 @@ public class PublicTransportAccountController {
 	}
 	
 	
+	/**
+	 * Tranaction public transport account.
+	 *
+	 * @param publicTransportAccountResource - the public transport account resource
+	 * @return the response entity
+	 */
 	@PutMapping(value = "/tranaction")
 	public ResponseEntity<Object> tranactionPublicTransportAccount(@Valid @RequestBody PublicTransportAccountResource publicTransportAccountResource) {
 		PublicTransportAccount publicTransportAccount = publicTransportAccountService.rechargeOrWithdrawPublicTransportAccount(publicTransportAccountResource);		
@@ -143,10 +187,17 @@ public class PublicTransportAccountController {
 	}
 	
 	
+	/**
+	 * Delete public transport account.
+	 *
+	 * @param id - the id
+	 * @return the response entity
+	 */
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Object> deletePublicTransportAccount(@PathVariable(value = "id", required = true) String id) {
 		String message = publicTransportAccountService.deletePublicTransportAccount(id);
 		SuccessAndErrorDetailsResource successDetailsDto = new SuccessAndErrorDetailsResource(message);
 		return new ResponseEntity<>(successDetailsDto, HttpStatus.CREATED);
 	}
+	
 }

@@ -43,9 +43,13 @@ public class InspectionController {
 	
 	@Autowired
 	private InspectionService inspectionService;
-
 	
 	
+	/**
+	 * Gets the all inspections.
+	 *
+	 * @return the all inspections
+	 */
 	@GetMapping(value = "/all")
 	public ResponseEntity<Object> getAllInspections() {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -57,9 +61,14 @@ public class InspectionController {
 			return new ResponseEntity<>(responseMessage, HttpStatus.NO_CONTENT);
 		}
 	}
+		
 	
-	
-	
+	/**
+	 * Gets the inspection by id.
+	 *
+	 * @param id - the id
+	 * @return the inspection by id
+	 */
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Object> getInspectionById(@PathVariable(value = "id", required = true) String id) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -73,6 +82,12 @@ public class InspectionController {
 	}
 
 	
+	/**
+	 * Gets the inspection by user id.
+	 *
+	 * @param userId - the user id
+	 * @return the inspection by user id
+	 */
 	@GetMapping(value = "/user/{userId}")
 	public ResponseEntity<Object> getInspectionByUserId(@PathVariable(value = "userId", required = true) String userId) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -86,6 +101,12 @@ public class InspectionController {
 	}
 	
 	
+	/**
+	 * Gets the inspection by route id.
+	 *
+	 * @param routeId - the route id
+	 * @return the inspection by route id
+	 */
 	@GetMapping(value = "/route/{routeId}")
 	public ResponseEntity<Object> getInspectionByRouteId(@PathVariable(value = "routeId", required = true) String routeId) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -99,7 +120,13 @@ public class InspectionController {
 	}
 	
 	
-	
+	/**
+	 * Gets the inspection by user id and route id.
+	 *
+	 * @param userId - the user id
+	 * @param routeId - the route id
+	 * @return the inspection by user id and route id
+	 */
 	@GetMapping(value = "/user/{userId}/route/{routeId}")
 	public ResponseEntity<Object> getInspectionByUserIdAndRouteId(@PathVariable(value = "userId", required = true) String userId,
 			@PathVariable(value = "routeId", required = true) String routeId) {
@@ -114,6 +141,12 @@ public class InspectionController {
 	}
 	
 	
+	/**
+	 * Adds the inspection.
+	 *
+	 * @param inspectionResource - the inspection resource
+	 * @return the response entity
+	 */
 	@PostMapping(value = "/save")
 	public ResponseEntity<Object> addInspection(@Valid @RequestBody InspectionResource inspectionResource) {
 		String inspectionId = inspectionService.saveInspection(inspectionResource);
@@ -122,7 +155,13 @@ public class InspectionController {
 	}
 	
 	
-	
+	/**
+	 * Update inspection.
+	 *
+	 * @param id - the id
+	 * @param inspectionResource - the inspection resource
+	 * @return the response entity
+	 */
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Object> updateInspection(@PathVariable(value = "id", required = true) String id,
 			@Valid @RequestBody InspectionResource inspectionResource) {
@@ -132,7 +171,12 @@ public class InspectionController {
 	}
 	
 	
-	
+	/**
+	 * Delete inspection.
+	 *
+	 * @param id - the id
+	 * @return the response entity
+	 */
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Object> deleteInspection(@PathVariable(value = "id", required = true) String id) {
 		String message = inspectionService.deleteInspection(id);

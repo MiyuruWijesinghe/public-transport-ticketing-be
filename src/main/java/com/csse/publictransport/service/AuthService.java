@@ -27,20 +27,35 @@ public interface AuthService {
 	/**
 	 * Authenticate user.
 	 *
-	 * @param loginRequest the login request
+	 * @param loginRequest - the login request
 	 * @return the jwt response resource
 	 */
 	public JwtResponseResource authenticateUser(LoginRequestResource loginRequest);
 
+	
 	/**
 	 * Register user.
 	 *
-	 * @param signUpRequest the sign up request
+	 * @param signUpRequest - the sign up request
 	 * @return the users
 	 */
 	public Users registerUser(SignupRequestResource signUpRequest);
 	
+	
+	/**
+	 * Find by user name.
+	 *
+	 * @param username - the username
+	 * @return the optional
+	 */
 	public Optional<Users> findByUserName(String username);
 	
+	
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
 	public List<Users> findAll();
+	
 }

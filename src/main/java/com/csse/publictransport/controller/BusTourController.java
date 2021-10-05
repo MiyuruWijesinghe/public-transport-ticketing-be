@@ -48,7 +48,11 @@ public class BusTourController {
 	private BusTourService busTourService;
 
 	
-	
+	/**
+	 * Gets the all bus tours.
+	 *
+	 * @return the all bus tours
+	 */
 	@GetMapping(value = "/all")
 	public ResponseEntity<Object> getAllBusTours() {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -62,7 +66,12 @@ public class BusTourController {
 	}
 	
 	
-	
+	/**
+	 * Gets the bus tour by id.
+	 *
+	 * @param id - the id
+	 * @return the bus tour by id
+	 */
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Object> getBusTourById(@PathVariable(value = "id", required = true) String id) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -76,6 +85,12 @@ public class BusTourController {
 	}
 	
 	
+	/**
+	 * Gets the bus tours by bus id.
+	 *
+	 * @param busId - the bus id
+	 * @return the bus tours by bus id
+	 */
 	@GetMapping(value = "/bus/{busId}")
 	public ResponseEntity<Object> getBusToursByBusId(@PathVariable(value = "busId", required = true) String busId) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
@@ -89,6 +104,12 @@ public class BusTourController {
 	}
 	
 	
+	/**
+	 * Adds the bus tour.
+	 *
+	 * @param busTourAddResource - the bus tour add resource
+	 * @return the response entity
+	 */
 	@PostMapping(value = "/save")
 	public ResponseEntity<Object> addBusTour(@Valid @RequestBody BusTourResource busTourAddResource) {
 		String busTourId = busTourService.saveBusTour(busTourAddResource);
@@ -97,7 +118,13 @@ public class BusTourController {
 	}
 	
 	
-	
+	/**
+	 * Update bus tour.
+	 *
+	 * @param id - the id
+	 * @param busTourResource - the bus tour resource
+	 * @return the response entity
+	 */
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Object> updateBusTour(@PathVariable(value = "id", required = true) String id,
 			@Valid @RequestBody BusTourResource busTourResource) {
@@ -107,7 +134,12 @@ public class BusTourController {
 	}
 	
 	
-	
+	/**
+	 * Delete bus tour.
+	 *
+	 * @param id - the id
+	 * @return the response entity
+	 */
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Object> deleteBusTour(@PathVariable(value = "id", required = true) String id) {
 		String message = busTourService.deleteBusTour(id);

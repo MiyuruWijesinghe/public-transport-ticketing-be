@@ -23,6 +23,4 @@ public interface BusTourRepository extends MongoRepository<BusTour, String> {
 
 	public List<BusTour> findByBusRouteMapBusId(String busId);
 	
-	
-
 }
