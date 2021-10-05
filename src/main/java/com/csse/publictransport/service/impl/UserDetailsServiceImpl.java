@@ -10,6 +10,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.csse.publictransport.model.Users;
 import com.csse.publictransport.repository.UserRepository;
 
+/**
+ * User Details Service Implementation
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

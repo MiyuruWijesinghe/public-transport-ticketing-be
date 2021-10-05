@@ -4,12 +4,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Roles Domain
+ * Roles Model
  * 
  ********************************************************************************************************
  *  ###   Date         Author    IT No.        Description
  *-------------------------------------------------------------------------------------------------------
- *    1   01-05-2021   MENUKAJ   IT19004914     Created
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
  *    
  ********************************************************************************************************
  */

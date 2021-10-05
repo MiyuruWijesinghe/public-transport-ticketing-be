@@ -22,6 +22,17 @@ import com.csse.publictransport.resource.InspectionResource;
 import com.csse.publictransport.resource.SuccessAndErrorDetailsResource;
 import com.csse.publictransport.service.InspectionService;
 
+/**
+ * Inspection Controller
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @RestController
 @RequestMapping(value = "/inspection")
 @CrossOrigin(origins = "*")

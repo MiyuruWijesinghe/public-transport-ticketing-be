@@ -12,6 +12,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.csse.publictransport.model.Users;
 
+/**
+ * User Details Implementation
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
 

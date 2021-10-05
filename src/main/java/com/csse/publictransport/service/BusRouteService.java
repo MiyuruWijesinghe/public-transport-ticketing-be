@@ -8,6 +8,17 @@ import org.springframework.stereotype.Service;
 import com.csse.publictransport.model.BusRoute;
 import com.csse.publictransport.resource.BusRouteResource;
 
+/**
+ * Bus Route Service
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @Service
 public interface BusRouteService {
 

@@ -10,6 +10,17 @@ import com.csse.publictransport.resource.PublicTransportAccountAddResource;
 import com.csse.publictransport.resource.PublicTransportAccountResource;
 import com.csse.publictransport.resource.PublicTransportAccountUpdateResource;
 
+/**
+ * Public Transport Account Service
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @Service
 public interface PublicTransportAccountService {
 

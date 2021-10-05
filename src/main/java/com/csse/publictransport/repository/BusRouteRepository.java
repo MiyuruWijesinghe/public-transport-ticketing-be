@@ -8,6 +8,17 @@ import org.springframework.stereotype.Repository;
 
 import com.csse.publictransport.model.BusRoute;
 
+/**
+ * Bus Route Repository
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @Repository
 public interface BusRouteRepository extends MongoRepository<BusRoute, String> {
 

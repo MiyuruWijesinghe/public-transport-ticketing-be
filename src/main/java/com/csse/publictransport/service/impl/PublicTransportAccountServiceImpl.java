@@ -26,6 +26,17 @@ import com.csse.publictransport.security.jwt.AuthTokenFilter;
 import com.csse.publictransport.service.CommonService;
 import com.csse.publictransport.service.PublicTransportAccountService;
 
+/**
+ * Public Transport Account Service Implementation
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @Component
 @Transactional(rollbackFor=Exception.class)
 public class PublicTransportAccountServiceImpl implements PublicTransportAccountService {

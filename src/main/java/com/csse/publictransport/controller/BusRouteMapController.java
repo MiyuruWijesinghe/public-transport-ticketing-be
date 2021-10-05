@@ -25,6 +25,17 @@ import com.csse.publictransport.resource.BusRouteMapResource;
 import com.csse.publictransport.resource.SuccessAndErrorDetailsResource;
 import com.csse.publictransport.service.BusRouteMapService;
 
+/**
+ * Bus Route Map Controller
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @RestController
 @RequestMapping(value = "/bus-route-map")
 @CrossOrigin(origins = "*")

@@ -28,6 +28,16 @@ import com.csse.publictransport.resource.SignupRequestResource;
 import com.csse.publictransport.security.jwt.JwtUtils;
 import com.csse.publictransport.service.AuthService;
 
+/**
+ * Auth Service Implementation
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
 
 @Component
 @Transactional(rollbackFor=Exception.class)
@@ -116,6 +126,11 @@ public class AuthServiceImpl implements AuthService {
 		} else {
 			return Optional.empty();
 		}
+	}
+
+	@Override
+	public List<Users> findAll() {
+		return userRepository.findAll();
 	}
 	
 }

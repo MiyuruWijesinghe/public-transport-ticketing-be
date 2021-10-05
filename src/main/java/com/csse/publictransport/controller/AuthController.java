@@ -1,6 +1,8 @@
 package com.csse.publictransport.controller;
 
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -25,6 +27,16 @@ import com.csse.publictransport.resource.SignupRequestResource;
 import com.csse.publictransport.resource.SuccessAndErrorDetailsResource;
 import com.csse.publictransport.service.AuthService;
 
+/**
+ * Auth Controller
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -76,6 +88,24 @@ public class AuthController {
 		Optional<Users> isPresentUsers = authService.findByUserName(username);
 		if (isPresentUsers.isPresent()) {
 			return new ResponseEntity<>(isPresentUsers, HttpStatus.OK);
+		} else {
+			responseMessage.setMessages(environment.getProperty("common.record-not-found"));
+			return new ResponseEntity<>(responseMessage, HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	
+	/**
+	 * Gets the all users.
+	 *
+	 * @return the all users
+	 */
+	@GetMapping(value = "/all")
+	public ResponseEntity<Object> getAllUsers() {
+		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
+		List<Users> users = authService.findAll();
+		if (!users.isEmpty()) {
+			return new ResponseEntity<>((Collection<Users>) users, HttpStatus.OK);
 		} else {
 			responseMessage.setMessages(environment.getProperty("common.record-not-found"));
 			return new ResponseEntity<>(responseMessage, HttpStatus.NO_CONTENT);

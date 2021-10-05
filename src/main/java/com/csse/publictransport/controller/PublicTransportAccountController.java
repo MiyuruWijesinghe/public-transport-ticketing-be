@@ -27,6 +27,17 @@ import com.csse.publictransport.resource.PublicTransportAccountUpdateResource;
 import com.csse.publictransport.resource.SuccessAndErrorDetailsResource;
 import com.csse.publictransport.service.PublicTransportAccountService;
 
+/**
+ * Public Transport Account Controller
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @RestController
 @RequestMapping(value = "/account")
 @CrossOrigin(origins = "*")

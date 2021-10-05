@@ -25,6 +25,17 @@ import com.csse.publictransport.resource.BusTourResource;
 import com.csse.publictransport.resource.SuccessAndErrorDetailsResource;
 import com.csse.publictransport.service.BusTourService;
 
+/**
+ * Bus Tour Controller
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @RestController
 @RequestMapping(value = "/bus-tour")
 @CrossOrigin(origins = "*")

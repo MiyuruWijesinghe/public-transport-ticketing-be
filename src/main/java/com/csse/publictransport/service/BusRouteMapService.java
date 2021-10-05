@@ -6,6 +6,17 @@ import org.springframework.stereotype.Service;
 import com.csse.publictransport.model.BusRouteMap;
 import com.csse.publictransport.resource.BusRouteMapResource;
 
+/**
+ * Bus Route Map Service
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-05-2021   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @Service
 public interface BusRouteMapService {
 
