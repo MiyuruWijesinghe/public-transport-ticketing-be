@@ -26,6 +26,9 @@ import com.csse.publictransport.resource.BusRouteMapResource;
 import com.csse.publictransport.resource.BusRouteResource;
 import com.csse.publictransport.resource.InspectionResource;
 import com.csse.publictransport.resource.LoginRequestResource;
+import com.csse.publictransport.resource.PublicTransportAccountAddResource;
+import com.csse.publictransport.resource.PublicTransportAccountResource;
+import com.csse.publictransport.resource.PublicTransportAccountUpdateResource;
 import com.csse.publictransport.resource.RolesAddResource;
 import com.csse.publictransport.resource.RolesUpdateResource;
 import com.csse.publictransport.resource.SignupRequestResource;
@@ -153,7 +156,31 @@ public class BaseResponseEntityExceptionHandler extends ResponseEntityExceptionH
 					sField.setAccessible(true);
 					sField.set(inspectionResource.getClass().cast(inspectionResource), error.getDefaultMessage());
 				}
-				return new ResponseEntity<>(inspectionResource, HttpStatus.UNPROCESSABLE_ENTITY);		
+				return new ResponseEntity<>(inspectionResource, HttpStatus.UNPROCESSABLE_ENTITY);
+			case "publicTransportAccountResource":
+				PublicTransportAccountResource publicTransportAccountResource = new PublicTransportAccountResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField = publicTransportAccountResource.getClass().getDeclaredField(error.getField());
+					sField.setAccessible(true);
+					sField.set(publicTransportAccountResource.getClass().cast(publicTransportAccountResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(publicTransportAccountResource, HttpStatus.UNPROCESSABLE_ENTITY);
+			case "publicTransportAccountAddResource":
+				PublicTransportAccountAddResource publicTransportAccountAddResource = new PublicTransportAccountAddResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField = publicTransportAccountAddResource.getClass().getDeclaredField(error.getField());
+					sField.setAccessible(true);
+					sField.set(publicTransportAccountAddResource.getClass().cast(publicTransportAccountAddResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(publicTransportAccountAddResource, HttpStatus.UNPROCESSABLE_ENTITY);
+			case "publicTransportAccountUpdateResource":
+				PublicTransportAccountUpdateResource publicTransportAccountUpdateResource = new PublicTransportAccountUpdateResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField = publicTransportAccountUpdateResource.getClass().getDeclaredField(error.getField());
+					sField.setAccessible(true);
+					sField.set(publicTransportAccountUpdateResource.getClass().cast(publicTransportAccountUpdateResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(publicTransportAccountUpdateResource, HttpStatus.UNPROCESSABLE_ENTITY);	
 			default:
 				return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
 			}
