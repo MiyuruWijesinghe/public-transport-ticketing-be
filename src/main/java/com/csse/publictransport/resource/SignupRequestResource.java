@@ -47,9 +47,13 @@ public class SignupRequestResource {
 	
 	@NotBlank(message = "{common.not-null}")
 	private String dob;
-    
+	
 	@NotBlank(message = "{common.not-null}")
-	private String nic;
+	@Pattern(regexp = "^$|NIC|PASSPORT",message="{identificationType.pattern}")
+	private String identificationType;
+	
+	@NotBlank(message = "{common.not-null}")
+	private String identificationValue;
  
     public String getEmail() {
         return email;
@@ -147,12 +151,20 @@ public class SignupRequestResource {
 		this.dob = dob;
 	}
 
-	public String getNic() {
-		return nic;
+	public String getIdentificationType() {
+		return identificationType;
 	}
 
-	public void setNic(String nic) {
-		this.nic = nic;
+	public void setIdentificationType(String identificationType) {
+		this.identificationType = identificationType;
+	}
+
+	public String getIdentificationValue() {
+		return identificationValue;
+	}
+
+	public void setIdentificationValue(String identificationValue) {
+		this.identificationValue = identificationValue;
 	}
 
 }

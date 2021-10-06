@@ -55,7 +55,9 @@ public class Users implements Serializable {
 	
 	private String status;
 	
-	private String nic;
+	private String identificationType;
+	
+	private String identificationValue;
 	
 	private String dob;
 	
@@ -179,12 +181,20 @@ public class Users implements Serializable {
 		this.status = status;
 	}
 
-	public String getNic() {
-		return nic;
+	public String getIdentificationType() {
+		return identificationType;
 	}
 
-	public void setNic(String nic) {
-		this.nic = nic;
+	public void setIdentificationType(String identificationType) {
+		this.identificationType = identificationType;
+	}
+
+	public String getIdentificationValue() {
+		return identificationValue;
+	}
+
+	public void setIdentificationValue(String identificationValue) {
+		this.identificationValue = identificationValue;
 	}
 
 	public String getDob() {
