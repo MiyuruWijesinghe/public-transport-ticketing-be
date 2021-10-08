@@ -4,6 +4,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -37,6 +40,8 @@ import com.csse.publictransport.service.InspectionService;
 @RequestMapping(value = "/inspection")
 @CrossOrigin(origins = "*")
 public class InspectionController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(InspectionController.class);
 
 	@Autowired
 	private Environment environment;

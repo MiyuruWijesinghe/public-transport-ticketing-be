@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -41,6 +43,8 @@ import com.csse.publictransport.service.TravelCardService;
 @RequestMapping(value = "/travel-card")
 @CrossOrigin(origins = "*")
 public class TravelCardController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(TravelCardController.class);
 
 	/** The environment. */
 	@Autowired

@@ -1,5 +1,8 @@
 package com.csse.publictransport.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Dashboard Controller
  * 
@@ -13,4 +16,5 @@ package com.csse.publictransport.controller;
 
 public class DashboardController {
 
+	private static final Logger logger = LoggerFactory.getLogger(DashboardController.class);
 }
